@@ -1,0 +1,534 @@
+/* CSS reset */
+
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}a:active,a:focus,a:hover,input:focus{outline:0}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  color:#fff;
+  margin: 0;
+
+  /* disable text select */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+  supported by Chrome and Opera */
+}
+
+/* Typography */
+p{
+  padding-bottom: 20px;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-justify {
+  text-align:  justify;
+  text-align-last: center;
+}
+
+/* STRUCTURE */
+
+img {
+  display: block;
+}
+
+
+/* POST */
+
+.post-container::-webkit-scrollbar {
+  display:none;
+}
+
+.ig-container {
+  background-image: url(images/icon-orientation.svg);
+  background-repeat: no-repeat;
+  background-size: 50% 50%;
+  background-position: bottom center;
+  
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+}
+
+
+.panzoom {
+}
+
+/* APP UI */
+
+/*load status bar*/
+
+.load-status-container {
+/*  background-color: rgba(126, 126, 126, 0.5);*/
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 2000;
+}
+
+.load-status-bar {
+  background-color: rgba(200, 200, 200, 0.7);
+  height: 5px;
+  width: 0;
+  top: 0;
+}
+
+.ui-icon {
+  background-size: 80px;
+  background-position:left;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 1080;
+}
+
+.ui-icon-active {
+  background-position:right;
+}
+
+.icon-fullscreen {
+  background-image: url(images/icon-fullscreen.svg);
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+.icon-360 {
+  background-size: 80px;
+  background-position:left;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 1080;
+  background-image: url(images/icon-360.svg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+}
+
+.icon-360-active {
+  background-position: right;
+}
+
+/* INFOGRAPHIC */
+
+.ig-content {
+  position : absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+
+#scene_container {
+  position:absolute;
+  left:0;
+  right: 0;
+  top:0;
+  bottom: 0;
+}
+
+.credits img {
+  width: 100%;
+}
+.credits p {
+  padding-bottom: 20px;
+}
+.credits .sub-heading-2 {
+  padding-bottom: 20px
+}
+
+
+/* Position coordinates */
+
+.pos {
+  position: absolute;
+}
+
+.x1{left:30px;}
+.x2{left:60px;}
+.x3{left:90px;}
+.x4{left:120px;}
+.x5{left:150px;}
+.x6{left:180px;}
+.x7{left:210px;}
+.x8{left:240px;}
+.x9{left:270px;}
+.x10{left:300px;}
+.x11{left:330px;}
+.x12{left:360px;}
+.x13{left:390px;}
+.x14{left:420px;}
+.x15{left:450px;}
+.x16{left:480px;}
+.x17{left:510px;}
+.x18{left:540px;}
+.x19{left:570px;}
+.x20{left:600px;}
+.x21{left:630px;}
+.x22{left:660px;}
+.x23{left:690px;}
+.x24{left:720px;}
+.x25{left:750px;}
+.x26{left:780px;}
+.x27{left:810px;}
+.x28{left:840px;}
+.x29{left:870px;}
+.x30{left:900px;}
+.x31{left:930px;}
+.x32{left:960px;}
+.x33{left:990px;}
+.x34{left:1020px;}
+.x35{left:1050px;}
+.x36{left:1080px;}
+.x37{left:1110px;}
+.x38{left:1140px;}
+.x39{left:1170px;}
+.x40{left:1200px;}
+.x41{left:1230px;}
+.x42{left:1260px;}
+.x43{left:1290px;}
+.x44{left:1320px;}
+.x45{left:1350px;}
+.x46{left:1380px;}
+.x47{left:1410px;}
+.x48{left:1440px;}
+.x49{left:1470px;}
+.x50{left:1500px;}
+.x51{left:1530px;}
+.x52{left:1560px;}
+.x53{left:1590px;}
+.x54{left:1620px;}
+.x55{left:1650px;}
+.x56{left:1680px;}
+.x57{left:1710px;}
+.x58{left:1740px;}
+.x59{left:1770px;}
+.x60{left:1800px;}
+.x61{left:1830px;}
+.x62{left:1860px;}
+.x63{left:1890px;}
+.x64{left:1920px;}
+
+.y1{top:30px;}
+.y2{top:60px;}
+.y3{top:90px;}
+.y4{top:120px;}
+.y5{top:150px;}
+.y6{top:180px;}
+.y7{top:210px;}
+.y8{top:240px;}
+.y9{top:270px;}
+.y10{top:300px;}
+.y11{top:330px;}
+.y12{top:360px;}
+.y13{top:390px;}
+.y14{top:420px;}
+.y15{top:450px;}
+.y16{top:480px;}
+.y17{top:510px;}
+.y18{top:540px;}
+.y19{top:570px;}
+.y20{top:600px;}
+.y21{top:630px;}
+.y22{top:660px;}
+.y23{top:690px;}
+.y24{top:720px;}
+.y25{top:750px;}
+.y26{top:780px;}
+.y27{top:810px;}
+.y28{top:840px;}
+.y29{top:870px;}
+.y30{top:900px;}
+.y31{top:930px;}
+.y32{top:960px;}
+.y33{top:990px;}
+.y34{top:1020px;}
+.y35{top:1050px;}
+.y36{top:1080px;}
+.y37{top:1110px;}
+.y38{top:1140px;}
+.y39{top:1170px;}
+.y40{top:1200px;}
+.y41{top:1230px;}
+.y42{top:1260px;}
+.y43{top:1290px;}
+.y44{top:1320px;}
+.y45{top:1350px;}
+.y46{top:1380px;}
+.y47{top:1410px;}
+.y48{top:1440px;}
+.y49{top:1470px;}
+.y50{top:1500px;}
+.y51{top:1530px;}
+.y52{top:1560px;}
+.y53{top:1590px;}
+.y54{top:1620px;}
+.y55{top:1650px;}
+.y56{top:1680px;}
+.y57{top:1710px;}
+.y58{top:1740px;}
+.y59{top:1770px;}
+.y60{top:1800px;}
+.y61{top:1830px;}
+.y62{top:1860px;}
+.y63{top:1890px;}
+.y64{top:1920px;}
+.y65{top:1950px;}
+.y66{top:1980px;}
+.y67{top:2010px;}
+.y68{top:2040px;}
+.y69{top:2070px;}
+.y70{top:2100px;}
+.y71{top:2130px;}
+.y72{top:2160px;}
+.y73{top:2190px;}
+.y74{top:2220px;}
+.y75{top:2250px;}
+.y76{top:2280px;}
+.y77{top:2310px;}
+.y78{top:2340px;}
+.y79{top:2370px;}
+.y80{top:2400px;}
+.y81{top:2430px;}
+.y82{top:2460px;}
+.y83{top:2490px;}
+.y84{top:2520px;}
+.y85{top:2550px;}
+.y86{top:2580px;}
+.y87{top:2610px;}
+.y88{top:2640px;}
+.y89{top:2670px;}
+.y90{top:2700px;}
+.y91{top:2730px;}
+.y92{top:2760px;}
+.y93{top:2790px;}
+.y94{top:2820px;}
+.y95{top:2850px;}
+.y96{top:2880px;}
+.y97{top:2910px;}
+.y98{top:2940px;}
+.y99{top:2970px;}
+.y100{top:3000px;}
+
+.w3{width:90px;}
+.w4{width:120px;}
+.w5{width:150px;}
+.w6{width:180px;}
+.w7{width:210px;}
+.w8{width:240px;}
+.w9{width:270px;}
+.w10{width:300px;}
+.w11{width:330px;}
+.w12{width:360px;}
+.w13{width:390px;}
+.w14{width:420px;}
+.w15{width:450px;}
+.w16{width:480px;}
+.w17{width:510px;}
+.w18{width:540px;}
+.w19{width:570px;}
+.w20{width:600px;}
+.w21{width:630px;}
+.w22{width:660px;}
+.w23{width:690px;}
+.w24{width:720px;}
+.w25{width:750px;}
+.w26{width:780px;}
+.w27{width:810px;}
+.w28{width:840px;}
+.w29{width:870px;}
+.w30{width:900px;}
+.w31{width:930px;}
+.w32{width:960px;}
+.w33{width:990px;}
+.w34{width:1020px;}
+.w35{width:1050px;}
+.w36{width:1080px;}
+.w37{width:1110px;}
+.w38{width:1140px;}
+.w39{width:1170px;}
+.w40{width:1200px;}
+.w41{width:1230px;}
+.w42{width:1260px;}
+.w43{width:1290px;}
+.w44{width:1320px;}
+.w45{width:1350px;}
+.w46{width:1380px;}
+.w47{width:1410px;}
+.w48{width:1440px;}
+.w49{width:1470px;}
+.w50{width:1500px;}
+.w51{width:1530px;}
+.w52{width:1560px;}
+.w53{width:1590px;}
+.w54{width:1620px;}
+.w55{width:1650px;}
+.w56{width:1680px;}
+.w57{width:1710px;}
+.w58{width:1740px;}
+.w59{width:1770px;}
+.w60{width:1800px;}
+.w61{width:1830px;}
+.w62{width:1860px;}
+.w63{width:1890px;}
+.w64{width:1920px;}
+.w65{width:1950px;}
+.w66{width:1980px;}
+
+.ht1{height:30px;}
+.ht2{height:60px;}
+.ht3{height:90px;}
+.ht4{height:120px;}
+.ht5{height:150px;}
+.ht6{height:180px;}
+.ht7{height:210px;}
+.ht8{height:240px;}
+.ht9{height:270px;}
+.ht10{height:300px;}
+.ht11{height:330px;}
+.ht12{height:360px;}
+.ht13{height:390px;}
+.ht14{height:420px;}
+.ht15{height:450px;}
+.ht16{height:480px;}
+.ht17{height:510px;}
+.ht18{height:540px;}
+.ht19{height:570px;}
+.ht20{height:600px;}
+.ht21{height:630px;}
+.ht22{height:660px;}
+.ht23{height:690px;}
+.ht24{height:720px;}
+.ht25{height:750px;}
+.ht26{height:780px;}
+.ht27{height:810px;}
+.ht28{height:840px;}
+.ht29{height:870px;}
+.ht30{height:900px;}
+.ht31{height:930px;}
+.ht32{height:960px;}
+.ht33{height:990px;}
+.ht34{height:1020px;}
+.ht35{height:1050px;}
+.ht36{height:1080px;}
+.ht37{height:1110px;}
+.ht38{height:1140px;}
+.ht39{height:1170px;}
+.ht40{height:1200px;}
+.ht41{height:1230px;}
+.ht42{height:1260px;}
+.ht43{height:1290px;}
+.ht44{height:1320px;}
+.ht45{height:1350px;}
+.ht46{height:1380px;}
+.ht47{height:1410px;}
+.ht48{height:1440px;}
+.ht49{height:1470px;}
+.ht50{height:1500px;}
+.ht51{height:1530px;}
+.ht52{height:1560px;}
+.ht53{height:1590px;}
+.ht54{height:1620px;}
+.ht55{height:1650px;}
+.ht56{height:1680px;}
+.ht57{height:1710px;}
+.ht58{height:1740px;}
+.ht59{height:1770px;}
+.ht60{height:1800px;}
+.ht61{height:1830px;}
+.ht62{height:1860px;}
+.ht63{height:1890px;}
+.ht64{height:1920px;}
+.ht65{height:1950px;}
+.ht66{height:1980px;}
+.ht67{height:2010px;}
+.ht68{height:2040px;}
+.ht69{height:2070px;}
+.ht70{height:2100px;}
+.ht71{height:2130px;}
+.ht72{height:2160px;}
+.ht73{height:2190px;}
+.ht74{height:2220px;}
+.ht75{height:2250px;}
+.ht76{height:2280px;}
+.ht77{height:2310px;}
+.ht78{height:2340px;}
+.ht79{height:2370px;}
+.ht80{height:2400px;}
+.ht81{height:2430px;}
+.ht82{height:2460px;}
+.ht83{height:2490px;}
+.ht84{height:2520px;}
+.ht85{height:2550px;}
+.ht86{height:2580px;}
+.ht87{height:2610px;}
+.ht88{height:2640px;}
+.ht89{height:2670px;}
+.ht90{height:2700px;}
+.ht91{height:2730px;}
+.ht92{height:2760px;}
+.ht93{height:2790px;}
+.ht94{height:2820px;}
+.ht95{height:2850px;}
+.ht96{height:2880px;}
+.ht97{height:2910px;}
+.ht98{height:2940px;}
+.ht99{height:2970px;}
+.ht100{height:3000px;}
+
+/* Responsive */
+
+@media only screen and (min-width:320px) {
+}
+
+@media only screen and (min-width:480px) {
+}
+
+@media only screen and (min-width:768px) {
+  .ig-container {
+    background-image: none;
+  }
+}
+
+@media only screen and (min-width:1024px) {
+}
+
+@media only screen and (min-width:1200px) {
+}
