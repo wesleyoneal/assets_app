@@ -9,7 +9,6 @@ html {
   box-sizing: inherit;
 }
 
-
 body {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: normal;
@@ -17,6 +16,7 @@ body {
   line-height: 20px;
   color:#fff;
   margin: 0;
+  /*overflow: hidden;*/
 
   /* disable text select */
   -webkit-touch-callout: none; /* iOS Safari */
@@ -60,27 +60,53 @@ img {
   display: block;
 }
 
-
 /* POST */
 
-.post-container::-webkit-scrollbar {
-  display:none;
+.project-container {
+  position: relative; /*setting position to 'fixed' breaks this div out of any containing div*/
+  overflow: hidden;
+  width: 100%; /* conform to any containing div's width */
 }
+
+.fixed {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.relative {
+  position: relative;
+  padding-bottom: 56.25%;
+}
+
+/*.project-container-fixed {
+position: fixed;
+overflow: hidden;
+top: 0;
+right: 0;
+bottom: 0;
+left:0;
+}*/
+
+/*.project-container::-webkit-scrollbar {
+display:none;
+}*/
 
 .ig-container {
   background-image: url(images/icon-orientation.svg);
   background-repeat: no-repeat;
   background-size: 50% 50%;
   background-position: bottom center;
-  
-  position: fixed;
+
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
 
 }
-
 
 .panzoom {
 }
@@ -90,7 +116,7 @@ img {
 /*load status bar*/
 
 .load-status-container {
-/*  background-color: rgba(126, 126, 126, 0.5);*/
+  /*  background-color: rgba(126, 126, 126, 0.5);*/
   width: 100%;
   height: 5px;
   position: absolute;
@@ -106,6 +132,17 @@ img {
   top: 0;
 }
 
+
+.icon-tray {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1080;
+}
+.icon-tray li {
+  float: left;
+  margin: 0 2px;
+}
 .ui-icon {
   background-size: 80px;
   background-position:left;
@@ -121,19 +158,18 @@ img {
 
 .icon-fullscreen {
   background-image: url(images/icon-fullscreen.svg);
+}
+
+.icon-fullscreen-fixed {
   position: fixed;
-  bottom: 10px;
-  right: 10px;
 }
 
 .icon-360 {
-  background-size: 80px;
-  background-position:left;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  z-index: 1080;
   background-image: url(images/icon-360.svg);
+
+
+}
+.icon-scalable {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -155,7 +191,6 @@ img {
   transform: translateX(-50%);
 }
 
-
 #scene_container {
   position:absolute;
   left:0;
@@ -173,7 +208,6 @@ img {
 .credits .sub-heading-2 {
   padding-bottom: 20px
 }
-
 
 /* Position coordinates */
 
