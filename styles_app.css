@@ -155,6 +155,13 @@ display:none;
 .ui-icon-active {
   background-position:right;
 }
+.icon-scalable {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+}
+
 
 .icon-fullscreen {
   background-image: url(images/icon-fullscreen.svg);
@@ -166,19 +173,17 @@ display:none;
 
 .icon-360 {
   background-image: url(images/icon-360.svg);
-
-
 }
-.icon-scalable {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: none;
+.icon-zoomout {
+  background-image: url(images/icon-zoomout.svg);
+}
+.icon-zoomin {
+  background-image: url(images/icon-zoomin.svg);
 }
 
-.icon-360-active {
-  background-position: right;
-}
+
+
+
 
 /* INFOGRAPHIC */
 
