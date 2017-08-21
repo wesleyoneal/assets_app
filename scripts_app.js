@@ -42,6 +42,22 @@ jQuery(document).ready(function ($) {
   setPanzoom();
   load_init_css();
 
+  $('.icon-zoomout').mousedown(function() {
+    $('.icon-zoomout').addClass('ui-icon-active');
+  });
+
+  $('.icon-zoomout').mouseup(function() {
+    $('.icon-zoomout').removeClass('ui-icon-active');
+  });
+
+  $('.icon-zoomin').mousedown(function() {
+    $('.icon-zoomin').addClass('ui-icon-active');
+  });
+
+  $('.icon-zoomin').mouseup(function() {
+    $('.icon-zoomin').removeClass('ui-icon-active');
+  });
+
   $('.icon-zoomout').on("click", function( e ) {
     e.preventDefault();
     $panzoom.panzoom("zoom", true);
@@ -101,62 +117,64 @@ jQuery(document).ready(function ($) {
     if(is_fs) {
       $('.project-container').removeClass('relative');
       $('.project-container').addClass('fixed');
+      $('.icon-fullscreen').addClass('ui-icon-active');
     } else {
       if (is_relative) {
         $('.project-container').addClass('relative');
         $('.project-container').removeClass('fixed');
       }
+      $('.icon-fullscreen').removeClass('ui-icon-active');
     }
   }
 
-function fs_function() {
-  var is_fs = document.mozFullScreenElement ||
-  document.webkitFullscreenElement
-  ;
+  function fs_function() {
+    var is_fs = document.mozFullScreenElement ||
+    document.webkitFullscreenElement
+    ;
 
-  document.fullScreenElement && null !== document.fullScreenElement || !document.mozFullScreenElement && !document.webkitFullscreenElement ? document.documentElement.requestFullscreen ? document.getElementsByClassName('project-container')[0].requestFullscreen() :
+    document.fullScreenElement && null !== document.fullScreenElement || !document.mozFullScreenElement && !document.webkitFullscreenElement ? document.documentElement.requestFullscreen ? document.getElementsByClassName('project-container')[0].requestFullscreen() :
 
-  document.documentElement.mozRequestFullScreen ? document.getElementsByClassName('project-container')[0].mozRequestFullScreen() :
+    document.documentElement.mozRequestFullScreen ? document.getElementsByClassName('project-container')[0].mozRequestFullScreen() :
 
-  document.documentElement.msRequestFullscreen ?
-  document.getElementsByClassName('project-container')[0].msRequestFullscreen() :
+    document.documentElement.msRequestFullscreen ?
+    document.getElementsByClassName('project-container')[0].msRequestFullscreen() :
 
-  document.documentElement.webkitRequestFullScreen && document.getElementsByClassName('project-container')[0].webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT) :
+    document.documentElement.webkitRequestFullScreen && document.getElementsByClassName('project-container')[0].webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT) :
 
-  document.exitFullscreen ? document.exitFullscreen() :
+    document.exitFullscreen ? document.exitFullscreen() :
 
-  document.mozCancelFullScreen ? document.mozCancelFullScreen() :
+    document.mozCancelFullScreen ? document.mozCancelFullScreen() :
 
-  document.msExitFullscreen ? document.msExitFullscreen() :
+    document.msExitFullscreen ? document.msExitFullscreen() :
 
-  document.webkitExitFullscreen && document.webkitExitFullscreen()
+    document.webkitExitFullscreen && document.webkitExitFullscreen()
 
-  fs_resize(is_fs);
-  fs_change_css(!is_fs);
+    fs_resize(is_fs);
+    fs_change_css(!is_fs);
 
-}
+  }
 
-function fullscreen_change() {
-  var is_fs = document.fullscreenElement ||
-  document.mozFullScreenElement ||
-  document.msFullscreenElement ||
-  document.webkitFullscreenElement
-  ;
+  function fullscreen_change() {
+    var is_fs = document.fullscreenElement ||
+    document.mozFullScreenElement ||
+    document.msFullscreenElement ||
+    document.webkitFullscreenElement
+    ;
 
-  fs_resize(is_fs);
-  fs_change_css(is_fs);
-}
+    fs_resize(is_fs);
+    fs_change_css(is_fs);
+  }
 
-document.onmozfullscreenchange = function () {
-  fullscreen_change();
-}
+  document.onmozfullscreenchange = function () {
+    fullscreen_change();
+  }
 
-document.MSFullscreenChange = function () {
-  fullscreen_change();
-}
+  document.MSFullscreenChange = function () {
+    fullscreen_change();
+  }
 
-document.onwebkitfullscreenchange = function() {
-  fullscreen_change();
-}
+  document.onwebkitfullscreenchange = function() {
+    fullscreen_change();
+  }
 
 });

@@ -41,6 +41,8 @@ function stop_rendering(m_app, m_main, m_cont, m_data, m_cfg, app_flags, scene, 
 
   if (m_main.detect_mobile()) {
     $('.icon-fullscreen').css('display', 'none');
+    $('.icon-zoomout').css('display', 'none');
+    $('.icon-zoomin').css('display', 'none');
     $('.icon-360').on('touchstart', function( e ) { click_handle(this, e )
     });
   } else {
@@ -80,13 +82,13 @@ function stop_rendering(m_app, m_main, m_cont, m_data, m_cfg, app_flags, scene, 
 }
 
 function ui_icon_deactivate(element) {
-  element.classList.remove('icon-360-active');
+  element.classList.remove('ui-icon-active');
   $section.find('.svg-bg').show();
   $panzoom.panzoom("enable");
 }
 
 function ui_icon_activate(element) {
-  element.classList.add('icon-360-active');
+  element.classList.add('ui-icon-active');
   $section.find('.svg-bg').hide();
   $panzoom.panzoom("disable");
   empty_name = element.getAttribute('emptyName');
@@ -97,8 +99,8 @@ function click_handle(element, e) {
   if (!$panzoom.panzoom("isDisabled")) {
     ui_icon_activate(element);
   } else {
-    if (!element.classList.contains('icon-360-active')) {
-      $(".icon-360").removeClass('icon-360-active');
+    if (!element.classList.contains('ui-icon-active')) {
+      $(".icon-360").removeClass('ui-icon-active');
       ui_icon_activate(element);
       return;
     }
