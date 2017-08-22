@@ -129,7 +129,8 @@ jQuery(document).ready(function ($) {
 
   function fs_function() {
     var is_fs = document.mozFullScreenElement ||
-    document.webkitFullscreenElement
+    document.webkitFullscreenElement ||
+    document.msFullscreenElement
     ;
 
     document.fullScreenElement && null !== document.fullScreenElement || !document.mozFullScreenElement && !document.webkitFullscreenElement ? document.documentElement.requestFullscreen ? document.getElementsByClassName('project-container')[0].requestFullscreen() :
@@ -148,6 +149,10 @@ jQuery(document).ready(function ($) {
     document.msExitFullscreen ? document.msExitFullscreen() :
 
     document.webkitExitFullscreen && document.webkitExitFullscreen()
+
+    if(is_fs && document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
 
     fs_resize(is_fs);
     fs_change_css(!is_fs);
