@@ -20,7 +20,7 @@ jQuery(document).ready(function ($) {
     var $section = $('.ig-container');
     var $panzoom = $section.find('.panzoom').panzoom({
       startTransform: 'scale(' + setZoomVarFunction() + ')',
-      increment: 0.1,
+      increment: 0.2,
       minScale: 0.1,
       maxScale: 2
     });
@@ -31,7 +31,7 @@ jQuery(document).ready(function ($) {
       e.preventDefault();
       var delta = e.delta || e.originalEvent.wheelDelta;
       var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
-      $panzoom.panzoom('zoom', zoomOut, {
+      $panzoom.panzoom("zoom", zoomOut, {
         animate: false,
         focal: e
       });
@@ -42,6 +42,7 @@ jQuery(document).ready(function ($) {
   setPanzoom();
   load_init_css();
 
+  //buttons for zooming in and out
   $('.icon-zoomout').mousedown(function() {
     $('.icon-zoomout').addClass('ui-icon-active');
   });
@@ -61,11 +62,71 @@ jQuery(document).ready(function ($) {
   $('.icon-zoomout').on("click", function( e ) {
     e.preventDefault();
     $panzoom.panzoom("zoom", true);
+    $panzoom.panzoom('option', {
+      focal: {
+        clientX: $(window).width() / 2,
+        clientY: $(window).height() / 2
+      }
+    });
   });
 
   $('.icon-zoomin').on("click", function( e ) {
     e.preventDefault();
     $panzoom.panzoom("zoom");
+    $panzoom.panzoom('option', {
+      focal: {
+        clientX: $(window).width() / 2,
+        clientY: $(window).height() / 2
+      }
+      });
+  });
+
+  //double tap functionality on mobile
+  var tapped = false;
+  var zoomed = false;
+
+  $(".ig-content").on("touchstart",function(e){
+
+    var touch = e.touches[0];
+    tap_x = touch.pageX;
+    tap_y = touch.pageY;
+
+    if (e.touches.length < 2) {
+
+      var matrix = $panzoom.panzoom("getMatrix");
+      var zoomLevel = matrix[0];
+
+      if(!tapped){
+        tapped = setTimeout(function() {
+          tapped = null;
+
+        },300);
+      } else {
+        clearTimeout(tapped);
+        tapped = null;
+
+        if (!zoomed) {
+          var inverseZoomLevel = 1/zoomLevel;
+          $panzoom.panzoom('option', {
+            increment: inverseZoomLevel,
+            focal: {
+              clientX: tap_x,
+              clientY: tap_y
+            }
+          });
+          $panzoom.panzoom("zoom");
+          resize_360();
+          zoomed = true;
+        } else {
+          re_render();
+          resize_360();
+          zoomed = false;
+        }
+      }
+      e.preventDefault()
+    } else {
+      $panzoom.panzoom("option", "increment", 0.1);
+    }
   });
 
   function re_render() {
@@ -96,8 +157,7 @@ jQuery(document).ready(function ($) {
 
   function fs_resize(is_fs) {
     if(document.fullscreenElement !== is_fs) {
-      setZoomVar = setZoomVarFunction();
-      $panzoom.panzoom("setMatrix", [setZoomVar, 0, 0, setZoomVar, 0, 0]);
+      re_render();
     } else {
       window.setTimeout(function(){fs_resize(is_fs)}, 100);
     }

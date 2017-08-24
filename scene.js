@@ -40,9 +40,7 @@ function stop_rendering(m_app, m_main, m_cont, m_data, m_cfg, app_flags, scene, 
   }
 
   if (m_main.detect_mobile()) {
-    $('.icon-fullscreen').css('display', 'none');
-    $('.icon-zoomout').css('display', 'none');
-    $('.icon-zoomin').css('display', 'none');
+    $('.icon-fullscreen, .icon-zoomout, .icon-zoomin').css('display', 'none');
     $('.icon-360').on('touchstart', function( e ) { click_handle(this, e )
     });
   } else {
