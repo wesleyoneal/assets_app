@@ -2,7 +2,7 @@ document.addEventListener('gesturestart', function (e) {
   e.preventDefault();
 });
 jQuery(document).ready(function ($) {
-
+  var orig_zoom;
   // GENERAL POST/INFOGRAPHICS
 
   //set initial zoom based on window width
@@ -24,6 +24,8 @@ jQuery(document).ready(function ($) {
       minScale: 0.1,
       maxScale: 2
     });
+
+    orig_zoom = $panzoom.panzoom('getMatrix')[0];
 
     //mousewheel zoom function
 
@@ -78,7 +80,7 @@ jQuery(document).ready(function ($) {
         clientX: $(window).width() / 2,
         clientY: $(window).height() / 2
       }
-      });
+    });
   });
 
   //double tap functionality on mobile
@@ -94,7 +96,7 @@ jQuery(document).ready(function ($) {
     if (e.touches.length < 2) {
 
       var matrix = $panzoom.panzoom("getMatrix");
-      var zoomLevel = matrix[0];
+      var zoomLevel = zoomed ? ( matrix[0] / orig_zoom ) - 1 : ( 1 / matrix[0] ) - 1;
 
       if(!tapped){
         tapped = setTimeout(function() {
@@ -105,25 +107,20 @@ jQuery(document).ready(function ($) {
         clearTimeout(tapped);
         tapped = null;
 
-        if (!zoomed) {
-          var inverseZoomLevel = 1/zoomLevel;
-          $panzoom.panzoom('option', {
-            increment: inverseZoomLevel,
-            focal: {
-              clientX: tap_x,
-              clientY: tap_y
-            }
-          });
-          $panzoom.panzoom("zoom");
-          resize_360();
-          zoomed = true;
-        } else {
-          re_render();
-          resize_360();
-          zoomed = false;
-        }
+        $panzoom.addClass('transition');
+        $panzoom.panzoom('zoom', zoomed, {
+          increment: zoomLevel,
+          focal: {
+            clientX: tap_x,
+            clientY: tap_y
+          }
+        });
+        zoomed = !zoomed;
+        window.setTimeout(function() {
+          $panzoom.removeClass('transition');
+        }, 400);
       }
-      e.preventDefault()
+      e.preventDefault();
     } else {
       $panzoom.panzoom("option", "increment", 0.1);
     }
@@ -132,6 +129,7 @@ jQuery(document).ready(function ($) {
   function re_render() {
     setZoomVar = setZoomVarFunction();
     $panzoom.panzoom("setMatrix", [setZoomVar, 0, 0, setZoomVar, 0, 0]);
+    orig_zoom = $panzoom.panzoom('getMatrix')[0];
   };
 
   function resize_360() {
