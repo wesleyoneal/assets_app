@@ -36,6 +36,9 @@ body {
 p{
   padding-bottom: 20px;
 }
+em {
+  font-style: italic;
+}
 
 strong {
   font-weight: bold;
