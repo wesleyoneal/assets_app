@@ -245,8 +245,11 @@ b4w.register("scene_1", function(exports, require) {
       var obj = m_scs.get_object_by_name(empty_name);
       m_trans.get_rotation(obj, obj_quat);
 
-      m_util.euler_to_quat([dy, 0, dx], _tmp_quat);
+      m_util.euler_to_quat([dy, 0, 0], _tmp_quat);
       m_quat.multiply(_tmp_quat, obj_quat, obj_quat);
+
+      m_util.euler_to_quat([0, 0, dx], _tmp_quat);
+      m_quat.multiply(obj_quat, _tmp_quat, obj_quat);
 
       m_trans.set_rotation_v(obj, obj_quat);
     }
@@ -305,7 +308,6 @@ b4w.register("scene_1", function(exports, require) {
       var obj = m_scs.get_object_by_name(empty_name);
       m_trans.get_rotation(obj, obj_quat);
 
-      // m_util.euler_to_quat([dy, 0, dx], _tmp_quat);
       m_util.euler_to_quat([dy, 0, 0], _tmp_quat);
       m_quat.multiply(_tmp_quat, obj_quat, obj_quat);
 
