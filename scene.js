@@ -53,43 +53,76 @@ function stop_rendering(m_app, m_main, m_cont, m_data, m_cfg, app_flags, scene, 
 
   function check_screen_zoom() {
     if (m_main.detect_mobile()) {
-      var scale = document.body.clientWidth / window.innerWidth;
+      var scale ;
       var zoom_cb = function(timeline, delta) {
-        var new_scale = 1;
+        var new_scale = document.body.clientWidth / window.innerWidth;
+        // console.log(new_scale);
         if (new_scale != scale) {
           scale = new_scale;
           m_cfg.set("canvas_resolution_factor", new_scale);
+          // console.log(new_scale);
           m_cont.resize_to_container(true);
         }
       }
       m_main.append_loop_cb(zoom_cb);
     }
     else {
-      var scale = document.body.clientWidth / window.innerWidth;
+      var scale ;
       var zoom_cb = function(timeline, delta) {
-        var new_scale = 1.5;
+        var new_scale = document.body.clientWidth / window.innerWidth;
+        // console.log(new_scale);
         if (new_scale != scale) {
           scale = new_scale;
           m_cfg.set("canvas_resolution_factor", new_scale);
+          // console.log(new_scale);
           m_cont.resize_to_container(true);
         }
       }
       m_main.append_loop_cb(zoom_cb);
     }
   }
+
+  // function check_screen_zoom() {
+  //   if (m_main.detect_mobile()) {
+  //     var scale = document.body.clientWidth / window.innerWidth;
+  //     var zoom_cb = function(timeline, delta) {
+  //       var new_scale = 1;
+  //       if (new_scale != scale) {
+  //         scale = new_scale;
+  //         m_cfg.set("canvas_resolution_factor", new_scale);
+  //         m_cont.resize_to_container(true);
+  //       }
+  //     }
+  //     m_main.append_loop_cb(zoom_cb);
+  //   }
+  //   else {
+  //     var scale = document.body.clientWidth / window.innerWidth;
+  //     var zoom_cb = function(timeline, delta) {
+  //       var new_scale = 1.5;
+  //       if (new_scale != scale) {
+  //         scale = new_scale;
+  //         m_cfg.set("canvas_resolution_factor", new_scale);
+  //         m_cont.resize_to_container(true);
+  //       }
+  //     }
+  //     m_main.append_loop_cb(zoom_cb);
+  //   }
+  // }
 }
 
-function ui_icon_deactivate(element) {
+function ui_icon_deactivate(element, m_cam) {
   element.classList.remove('ui-icon-active');
   $section.find('.svg-bg').show();
   $panzoom.panzoom("enable");
+  m_cam.target_setup(camera, {pivot: _target_pivot, use_panning: true});
 }
 
-function ui_icon_activate(element) {
+function ui_icon_activate(element, m_cam) {
   element.classList.add('ui-icon-active');
   $section.find('.svg-bg').hide();
   $panzoom.panzoom("disable");
   empty_name = element.getAttribute('emptyName');
+  m_cam.static_setup(camera);
 }
 
 function click_handle(element, e) {
